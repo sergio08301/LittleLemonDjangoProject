@@ -4,10 +4,12 @@ from rest_framework.routers import DefaultRouter
 from restaurant import views
  
 router = DefaultRouter()
-router.register(r'tables', views.BookingViewSet)  # Agrega la vista de reservas
+router.register(r'tables', views.BookingViewSet)  
 
 urlpatterns = [ 
     path('admin/', admin.site.urls), 
-    path('restaurant/', include('restaurant.urls')),  # Mantén esto para las vistas normales
-    path('restaurant/booking/', include(router.urls)),  # Agrega el router aquí
+    path('restaurant/', include('restaurant.urls')),  
+    path('restaurant/booking/', include(router.urls)),  
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),    
 ]
